@@ -1,0 +1,97 @@
+webapp下的web.xml
+
+	<filter>
+		<filter-name>ContextCommonSecurityFilter</filter-name>
+		<filter-class>
+			gnnt.MEBS.security.ContextCommonSecurityFilter
+		</filter-class>
+		<init-param>
+			<param-name>IGNORE_URIS</param-name>
+			<param-value>/common_front/checkneedless/user/logon/logon.action</param-value>
+		</init-param>
+		<init-param>
+			<param-name>IGNORE_EXTS</param-name>
+			<param-value>login_syn.jsp,httpXmlServlet,mobileServlet,communicateServlet,mobileXmlServlet,HTTPXmlServlet,GetOrderXML,XMLServlet</param-value>
+		</init-param>
+		<init-param>
+			<param-name>IGNORE_PARAMS</param-name>
+			<param-value>URI1:PARAM_NAME1,URI2:PARAM_NAME2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>IS_ALLOW_XIAO_KUO_HAO</param-name>
+			<param-value>TRUE</param-value>
+		</init-param>
+	</filter>	
+	<filter-mapping>
+		<filter-name>ContextCommonSecurityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+------------------------------------------------------------------------------------------------------------------------
+	
+tomcat 6 的conf下的web.xml
+
+	<filter>
+		<filter-name>TomcatCommonSecurityFilter</filter-name>
+		<filter-class>
+			gnnt.MEBS.security.TomcatCommonSecurityFilter
+		</filter-class>
+		<init-param>
+			<param-name>IGNORE_URIS</param-name>
+			<param-value>/common_front/checkneedless/user/logon/logon.action</param-value>
+		</init-param>
+		<init-param>
+			<param-name>IGNORE_EXTS</param-name>
+			<param-value>login_syn.jsp,httpXmlServlet,mobileServlet,communicateServlet,mobileXmlServlet,HTTPXmlServlet,GetOrderXML,XMLServlet</param-value>
+		</init-param>
+		<init-param>
+			<param-name>IGNORE_PARAMS</param-name>
+			<param-value>URI1:PARAM_NAME1,URI2:PARAM_NAME2</param-value>
+		</init-param>
+	</filter>	
+	<filter-mapping>
+		<filter-name>TomcatCommonSecurityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+------------------------------------------------------------------------------------------------------------------------
+
+tomcat 5 的conf下的web.xml
+
+	<filter>
+		<filter-name>Tomcat5CommonSecurityFilter</filter-name>
+		<filter-class>
+			gnnt.MEBS.security.Tomcat5CommonSecurityFilter
+		</filter-class>
+		<init-param>
+			<param-name>IGNORE_URIS</param-name>
+			<param-value>/common_front/checkneedless/user/logon/logon.action</param-value>
+		</init-param>
+		<init-param>
+			<param-name>IGNORE_EXTS</param-name>
+			<param-value>login_syn.jsp,httpXmlServlet,mobileServlet,communicateServlet,mobileXmlServlet,HTTPXmlServlet,GetOrderXML,XMLServlet</param-value>
+		</init-param>
+		<init-param>
+			<param-name>IGNORE_PARAMS</param-name>
+			<param-value>URI1:PARAM_NAME1,URI2:PARAM_NAME2</param-value>
+		</init-param>
+	</filter>	
+	<filter-mapping>
+		<filter-name>Tomcat5CommonSecurityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+------------------------------------------------------------------------------------------------------------------------
+工程下的dwr.xml配置文件参考
+
+<dwr>   
+    <allow>              
+        <create javascript="..." creator="..." scope="...">   
+            ...
+        </create> 
+        
+        <!-- 增加dwr过滤器，防止sql注入  -->
+        <filter class="gnnt.MEBS.security.DwrSecurityFilter"></filter>
+        
+    </allow>   
+</dwr>
